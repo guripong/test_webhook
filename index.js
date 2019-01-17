@@ -27,27 +27,11 @@ restService.post("/echo", function(req, res) {
 
      var speech = 'hi hi';
      var speech2 = 'hi hi hi hi hi';
-/*
      return res.json({
-      speech: speech,  // ASCII characters only
-      displayText: speech,
-      data: {
-        google: {
-          expect_user_response: true,
-          is_ssml: true,
-          permissions_request: {
-            opt_context: "...",
-            permissions: [
-              "NAME",
-              "DEVICE_COARSE_LOCATION",
-              "DEVICE_PRECISE_LOCATION"
-            ]
-          }
-        }
-      },
-    });
-    */
-     
+      fulfillmentText: speech,
+      source: "example.com",
+     });
+     /*
   return res.json({
     fulfillmentText: speech,
     fulfillmentMessages: [
@@ -95,7 +79,7 @@ restService.post("/echo", function(req, res) {
       }
     }
   });
-  
+  */
 });
 
 restService.post("/audio", function(req, res) {
