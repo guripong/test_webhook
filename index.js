@@ -11,7 +11,7 @@ restService.use(
   })
 );
 
-restService.use(express.json());
+restService.use(bodyParser.json());
 
 restService.post("/echo", function(req, res) {
   /*
@@ -23,10 +23,10 @@ restService.post("/echo", function(req, res) {
       : "Seems like some problem. Speak again.";
       */
      console.log(` /echo post!`);
-     console.log(`req:`+req);
+     console.log(`req.body:`+JSON.stringify(req.body));
 
      var speech = 'hi hi!';
-
+/*
      return res.json({
       speech: speech,  // ASCII characters only
       displayText: speech,
@@ -45,13 +45,13 @@ restService.post("/echo", function(req, res) {
         }
       },
     });
-     /*
+    */
+     
   return res.json({
     speech: speech,
     displayText: speech,
-    source: "webhook-echo-sample"
   });
-  */
+  
 });
 
 restService.post("/audio", function(req, res) {
