@@ -13,7 +13,7 @@ restService.use(
 restService.use(bodyParser.json());
 
 restService.post("/echo", function(req, res) {
-    var body = JSON.parse(JSON.stringify(req.body));
+    var body = JSON.stringify(req.body);
   /*
   var speech =
     req.body.result &&
