@@ -1,7 +1,6 @@
 "use strict";
 
 const express = require("express");
-const bodyParser = require("body-parser");
 
 const restService = express();
 
@@ -11,9 +10,10 @@ restService.use(
   })
 );
 
-restService.use(bodyParser.json());
+restService.use(express.json());
 
 restService.post("/echo", function(req, res) {
+    var body = JSON.parse(JSON.stringify(req.body));
   /*
   var speech =
     req.body.result &&
@@ -22,64 +22,17 @@ restService.post("/echo", function(req, res) {
       ? req.body.result.parameters.echoText
       : "Seems like some problem. Speak again.";
       */
-     console.log(` /echo post!`);
-     console.log(`req.body:`+JSON.parse(JSON.stringify(req.body)) );
 
-     var speech = 'hi hi';
-     var speech2 = 'hi hi hi hi hi';
+     console.log(` /echo post!`);
+     console.log(`req.body:`+ body);
+
+     var speech = 'How many member in EDU AI Lab?';
+
      return res.json({
       fulfillmentText: speech,
       source: "example.com",
      });
-     /*
-  return res.json({
-    fulfillmentText: speech,
-    fulfillmentMessages: [
-      {
-        text: [
-          speech2
-        ],
-      }
-    ],
-    source: "example.com",
-    payload: {
-      google: {
-        expectUserResponse: true,
-        richResponse: {
-          items: [
-            {
-              simpleResponse: {
-                textToSpeech: "this is a simple response"
-              }
-            }
-          ]
-        }
-      },
-      facebook: {
-        text: "Hello, Facebook!"
-      },
-      slack: {
-        text: "This is a text response for Slack."
-      }
-    },
-    outputContexts: [
-      {
-        name: "projects/${PROJECT_ID}/agent/sessions/${SESSION_ID}/contexts/context name",
-        lifespanCount: 5,
-        parameters: {
-          param: "param value"
-        }
-      }
-    ],
-    followupEventInput: {
-      name: "event name",
-      languageCode: "en-US",
-      parameters: {
-        param: "param value"
-      }
-    }
-  });
-  */
+   
 });
 
 restService.post("/audio", function(req, res) {
