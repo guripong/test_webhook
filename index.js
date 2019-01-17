@@ -11,7 +11,7 @@ restService.use(
   })
 );
 
-restService.use(bodyParser.json());
+restService.use(express.json());
 
 restService.post("/echo", function(req, res) {
   /*
@@ -24,7 +24,7 @@ restService.post("/echo", function(req, res) {
       */
      console.log(` /echo post!`);
      console.log(`req:`+req);
-     
+
      var speech = 'hi hi!';
 
      return res.json({
