@@ -1,7 +1,7 @@
 "use strict";
 
 const express = require("express");
-
+var bodyParser = require('body-parser');
 const restService = express();
 
 restService.use(
@@ -10,7 +10,7 @@ restService.use(
   })
 );
 
-restService.use(express.json());
+restService.use(bodyParser.json());
 
 restService.post("/echo", function(req, res) {
     var body = JSON.parse(JSON.stringify(req.body));
