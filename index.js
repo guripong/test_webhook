@@ -23,12 +23,35 @@ restService.post("/echo", function(req, res) {
       : "Seems like some problem. Speak again.";
       */
      console.log(` /echo post!`);
+     console.log(`req:`+req);
+     
      var speech = 'hi hi!';
+
+     return res.json({
+      speech: speech,  // ASCII characters only
+      displayText: speech,
+      data: {
+        google: {
+          expect_user_response: true,
+          is_ssml: true,
+          permissions_request: {
+            opt_context: "...",
+            permissions: [
+              "NAME",
+              "DEVICE_COARSE_LOCATION",
+              "DEVICE_PRECISE_LOCATION"
+            ]
+          }
+        }
+      },
+    });
+     /*
   return res.json({
     speech: speech,
     displayText: speech,
     source: "webhook-echo-sample"
   });
+  */
 });
 
 restService.post("/audio", function(req, res) {
