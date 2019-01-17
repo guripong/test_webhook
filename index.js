@@ -14,12 +14,16 @@ restService.use(
 restService.use(bodyParser.json());
 
 restService.post("/echo", function(req, res) {
+  /*
   var speech =
     req.body.result &&
     req.body.result.parameters &&
     req.body.result.parameters.echoText
       ? req.body.result.parameters.echoText
       : "Seems like some problem. Speak again.";
+      */
+     console.log(` /echo post!`);
+     var speech = 'hi hi!';
   return res.json({
     speech: speech,
     displayText: speech,
@@ -195,6 +199,6 @@ restService.post("/slack-test", function(req, res) {
   });
 });
 
-restService.listen(process.env.PORT || 8000, function() {
-  console.log("Server up and listening");
+restService.listen(process.env.PORT || 9696, function() {
+  console.log("Server up and 9696 port listening");
 });
