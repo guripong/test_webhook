@@ -23,9 +23,10 @@ restService.post("/echo", function(req, res) {
       : "Seems like some problem. Speak again.";
       */
      console.log(` /echo post!`);
-     console.log(`req.body:`+JSON.stringify(req.body));
+     console.log(`req.body:`+JSON.parse(JSON.stringify(req.body)) );
 
-     var speech = 'hi hi!';
+     var speech = 'hi hi';
+     var speech2 = 'hi hi hi hi hi';
 /*
      return res.json({
       speech: speech,  // ASCII characters only
@@ -52,7 +53,7 @@ restService.post("/echo", function(req, res) {
     fulfillmentMessages: [
       {
         text: [
-          "text response"
+          speech2
         ],
       }
     ],
